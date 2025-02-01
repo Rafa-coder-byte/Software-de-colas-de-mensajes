@@ -45,7 +45,7 @@ namespace MessageQueue.DataAccess.Migrations
                     Title = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Body = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false),
                     ProducerId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ReadBy = table.Column<string>(type: "nvarchar(MAX)", nullable: false)
+                    ReadBy = table.Column<string>(type: "Text", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessageQueue.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250201045447_ColaDeMensajes")]
+    [Migration("20250201055425_ColaDeMensajes")]
     partial class ColaDeMensajes
     {
         /// <inheritdoc />
@@ -42,7 +42,7 @@ namespace MessageQueue.DataAccess.Migrations
 
                     b.Property<string>("ReadBy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(MAX)");
+                        .HasColumnType("Text");
 
                     b.HasKey("Id");
 

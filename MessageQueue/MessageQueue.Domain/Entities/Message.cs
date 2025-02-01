@@ -16,12 +16,12 @@ namespace MessageQueue.Domain.Entities
     /// </summary>
     public class Message : Entity
     {
-        private readonly HashSet<Guid> _readBy = new();
+        private readonly List<Guid> _readBy = new();
 
         /// <summary>
         /// Contenido del mensaje
         /// </summary>
-        public MessageContent Content { get; private set; }
+        public MessageContent Content { get; set; }
 
         /// <summary>
         /// Identificador del productor (clave foránea a Producer)

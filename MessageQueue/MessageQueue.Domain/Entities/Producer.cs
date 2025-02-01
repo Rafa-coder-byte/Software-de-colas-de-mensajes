@@ -17,7 +17,7 @@ namespace MessageQueue.Domain.Entities
         /// <summary>
         /// Endpoint de red del productor
         /// </summary>
-        public NetworkEndpoint Endpoint { get; private set; }
+        public NetworkEndpoint Endpoint { get; set; }
 
         /// <summary>
         /// Constructor para crear un producidor en la base de datos
