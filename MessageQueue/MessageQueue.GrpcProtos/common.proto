@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "MessageQueue.GrpcProtos";
+
+package GrpcProtos;
+
+message GetRequest{
+	string id = 1;
+}
+
+message DeleteRequest{
+	string id = 1;
+}
+
+message MessageContent{
+	string title = 1;
+	string content = 2;
+}
+
+message NetworkEndpoint{
+	string ip = 1;
+	int32 port = 2;
+}

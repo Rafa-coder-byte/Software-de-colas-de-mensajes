@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "MessageQueue.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+service Message {
+
+	rpc CreateMessage (CreateMessageRequest) returns(MessageDTO);
+	rpc GetMessage (GetRequest) returns(NullableMessageDTO);
+	rpc GetAllMessages (google.protobuf.Empty) returns(Messages);
+	rpc UpdateMessage (MessageDTO) returns(google.protobuf.Empty);
+	rpc DeleteMessage (DeleteRequest) returns(google.protobuf.Empty);
+}
+
+message MessageDTO{
+	string id = 1;
+	
+}
+
+message Messagess{
+	repeated MessageDTO items = 1;
+}
+
+message NullableMessageDTO{
+	oneof kind{
+		google.protobuf.Empty null = 1;
+		MessageDTO actuador = 2;
+	}
+}
+
+message CreateMessageRequest{
+	
+}

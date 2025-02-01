@@ -31,7 +31,7 @@ namespace MessageQueue.Domain.Entities
         /// <summary>
         /// Lista de consumidores que han leído el mensaje (claves foráneas a Consumer)
         /// </summary>
-        public IReadOnlyCollection<Guid> ReadBy => _readBy.ToList().AsReadOnly();
+        public IReadOnlyCollection<Guid> ReadBy => _readBy.AsReadOnly();
 
         /// <summary>
         /// Constructor para crear un mensaje
