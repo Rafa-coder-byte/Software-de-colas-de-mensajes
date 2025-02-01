@@ -4,7 +4,8 @@ using MessageQueue.Domain.ValueObjects;
 using MessageQueue.Contracts;
 using MessageQueue.DataAccess.Respositories.Messages;
 using MessageQueue.DataAccessTests.Utilities;
-using MessageQueue.DataAccess.Respositories.Producers; // Ajusta el namespace según tu proyecto
+using MessageQueue.DataAccess.Respositories.Producers;
+using System.Data.Entity.Core.Metadata.Edm; // Ajusta el namespace según tu proyecto
 
 namespace MessageQueue.DataAccessTests
 {
@@ -23,6 +24,7 @@ namespace MessageQueue.DataAccessTests
             _context = new ApplicationContext(ConnectionStringProvider.GetConnectingString());
             _unitOfWork = new UnitOfWork(_context);
             _messageRepository = new MessageRepository(_context);
+            _producerRepository = new ProducerRepository(_context);
 
             // Limpia y recrea la base de datos
             _context.Database.EnsureDeleted();
@@ -62,9 +64,16 @@ namespace MessageQueue.DataAccessTests
         public void GetById_ShouldReturnMessage()
         {
             // Arrange
-            var producerId = Guid.NewGuid();
+            // 1. Crea un Producer y guárdalo en la base de datos
+            var producerEndpoint = new NetworkEndpoint("192.168.1.1", 8080);
+            var producer = new Producer(Guid.NewGuid(), producerEndpoint);
+
+            _producerRepository.Add(producer); // Asegúrate de inyectar ProducerRepository en las pruebas
+            _unitOfWork.SaveChanges();
+
+
             var content = new MessageContent("Alerta", "Temperatura crítica");
-            var message = new Message(Guid.NewGuid(), content, producerId);
+            var message = new Message(Guid.NewGuid(), content, producer.Id);
 
             _context.Set<Message>().Add(message);
             _unitOfWork.SaveChanges();
@@ -81,11 +90,18 @@ namespace MessageQueue.DataAccessTests
         public void GetAll_ShouldReturnAllMessages()
         {
             // Arrange
-            var producerId = Guid.NewGuid();
+            // 1. Crea un Producer y guárdalo en la base de datos
+            var producerEndpoint = new NetworkEndpoint("192.168.1.1", 8080);
+            var producer = new Producer(Guid.NewGuid(), producerEndpoint);
+
+            _producerRepository.Add(producer); // Asegúrate de inyectar ProducerRepository en las pruebas
+            _unitOfWork.SaveChanges();
+
+
             var content1 = new MessageContent("Alerta", "Temperatura crítica");
             var content2 = new MessageContent("Advertencia", "Presión alta");
-            var message1 = new Message(Guid.NewGuid(), content1, producerId);
-            var message2 = new Message(Guid.NewGuid(), content2, producerId);
+            var message1 = new Message(Guid.NewGuid(), content1, producer.Id);
+            var message2 = new Message(Guid.NewGuid(), content2, producer.Id);
 
             _context.Set<Message>().AddRange(message1, message2);
             _unitOfWork.SaveChanges();
@@ -100,10 +116,17 @@ namespace MessageQueue.DataAccessTests
         [TestMethod]
         public void Update_ShouldModifyMessage()
         {
+
             // Arrange
-            var producerId = Guid.NewGuid();
+            // 1. Crea un Producer y guárdalo en la base de datos
+            var producerEndpoint = new NetworkEndpoint("192.168.1.1", 8080);
+            var producer = new Producer(Guid.NewGuid(), producerEndpoint);
+
+            _producerRepository.Add(producer); // Asegúrate de inyectar ProducerRepository en las pruebas
+            _unitOfWork.SaveChanges();
+
             var content = new MessageContent("Alerta", "Temperatura crítica");
-            var message = new Message(Guid.NewGuid(), content, producerId);
+            var message = new Message(Guid.NewGuid(), content, producer.Id);
 
             _context.Set<Message>().Add(message);
             _unitOfWork.SaveChanges();
@@ -124,10 +147,17 @@ namespace MessageQueue.DataAccessTests
         [TestMethod]
         public void Delete_ShouldRemoveMessage()
         {
+
             // Arrange
-            var producerId = Guid.NewGuid();
+            // 1. Crea un Producer y guárdalo en la base de datos
+            var producerEndpoint = new NetworkEndpoint("192.168.1.1", 8080);
+            var producer = new Producer(Guid.NewGuid(), producerEndpoint);
+
+            _producerRepository.Add(producer); // Asegúrate de inyectar ProducerRepository en las pruebas
+            _unitOfWork.SaveChanges();
+
             var content = new MessageContent("Alerta", "Temperatura crítica");
-            var message = new Message(Guid.NewGuid(), content, producerId);
+            var message = new Message(Guid.NewGuid(), content, producer.Id);
 
             _context.Set<Message>().Add(message);
             _unitOfWork.SaveChanges();
