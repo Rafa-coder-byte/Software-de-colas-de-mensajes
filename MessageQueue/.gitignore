@@ -1,0 +1,61 @@
+## Ignorar la carpeta .vs (configuración de Visual Studio)
+.vs/
+
+## Ignorar archivos de compilación y binarios
+bin/
+obj/
+
+## Ignorar archivos de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Ignorar archivos de caché de Visual Studio
+.vscode/
+.vsconfig
+
+## Ignorar archivos de configuración local (como appsettings.Development.json)
+appsettings.*.json
+
+## Ignorar paquetes NuGet
+packages/
+*.nupkg
+nuget.exe
+
+## Ignorar archivos de ReSharper (si lo usas)
+_ReSharper.*
+*.ReSharper
+
+## Ignorar archivos de Rider (si lo usas)
+.idea/
+*.idea
+
+## Ignorar archivos de Docker (si lo usas)
+docker-compose.*
+.dockerignore
+
+## Ignorar archivos de pruebas
+TestResults/
+*.trx
+
+## Ignorar archivos de logs y temporales
+*.log
+*.tmp
+*.temp
+
+## Ignorar archivos de Azure Functions (si lo usas)
+func/
+
+## Ignorar archivos de Node.js (si lo usas)
+node_modules/
+npm-debug.log
+
+## Ignorar archivos de VS Code (si lo usas)
+.vscode/
+
+## Ignorar archivos de macOS (si trabajas en macOS)
+.DS_Store
+
+## Ignorar archivos de Windows (si trabajas en Windows)
+Thumbs.db
