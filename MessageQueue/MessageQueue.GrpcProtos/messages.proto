@@ -8,31 +8,64 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "common.proto";
 
+
+
+// Definimos un servicio llamado MessageService que tiene seis métodos
 service Message {
-
-	rpc CreateMessage (CreateMessageRequest) returns(MessageDTO);
-	rpc GetMessage (GetRequest) returns(NullableMessageDTO);
-	rpc GetAllMessages (google.protobuf.Empty) returns(Messages);
-	rpc UpdateMessage (MessageDTO) returns(google.protobuf.Empty);
-	rpc DeleteMessage (DeleteRequest) returns(google.protobuf.Empty);
+  // Método SendMessage que envía un mensaje y devuelve una respuesta
+  rpc SendMessage(MessageDTO) returns (MessageResponse) {}
+  // Método GetUnreadMessages que devuelve un flujo de mensajes que no han sido leídos por un consumidor
+  rpc GetUnreadMessages(ConsumerRequest) returns (stream MessageDTO) {}
+  // Método GetPendingMessagesCount que devuelve el número de mensajes pendientes de leer para un consumidor
+  rpc GetPendingMessagesCount(ConsumerRequest) returns (PendingMessagesCountResponse) {}
+  // Método MarkMessageAsRead que marca un mensaje como leído por un consumidor
+  rpc MarkMessageAsRead(MessageReadRequest) returns (MessageResponse) {}
+  // Método GetReadMessages que devuelve un flujo de mensajes que han sido leídos por un consumidor
+  rpc GetReadMessages(ConsumerRequest) returns (stream MessageDTO) {}
+  // Método GetSentMessages que devuelve un flujo de mensajes que han sido enviados por un productor
+  rpc GetSentMessages(ProducerRequest) returns (stream MessageDTO) {}
 }
 
-message MessageDTO{
-	string id = 1;
-	
+// Definimos un mensaje llamado Message que tiene cuatro campos: id, content, producer_id y read_by
+message MessageDTO {
+  // Campo id de tipo string
+  string id = 1;
+  // Campo content de tipo MessageContent
+  MessageContent content = 2;
+  // Campo producer_id de tipo string
+  string producer_id = 3;
+  // Campo read_by de tipo string repetido
+  repeated string read_by = 4;
 }
 
-message Messagess{
-	repeated MessageDTO items = 1;
+// Definimos un mensaje llamado MessageResponse que tiene un campo llamado message
+message MessageResponse {
+  // Campo message de tipo string
+  string message = 1;
 }
 
-message NullableMessageDTO{
-	oneof kind{
-		google.protobuf.Empty null = 1;
-		MessageDTO actuador = 2;
-	}
+// Definimos un mensaje llamado ConsumerRequest que tiene un campo llamado consumer_id
+message ConsumerRequest {
+  // Campo consumer_id de tipo string
+  string consumer_id = 1;
 }
 
-message CreateMessageRequest{
-	
+// Definimos un mensaje llamado PendingMessagesCountResponse que tiene un campo llamado count
+message PendingMessagesCountResponse {
+  // Campo count de tipo int32
+  int32 count = 1;
+}
+
+// Definimos un mensaje llamado MessageReadRequest que tiene dos campos: message_id y consumer_id
+message MessageReadRequest {
+  // Campo message_id de tipo string
+  string message_id = 1;
+  // Campo consumer_id de tipo string
+  string consumer_id = 2;
+}
+
+// Definimos un mensaje llamado ProducerRequest que tiene un campo llamado producer_id
+message ProducerRequest {
+  // Campo producer_id de tipo string
+  string producer_id = 1;
 }

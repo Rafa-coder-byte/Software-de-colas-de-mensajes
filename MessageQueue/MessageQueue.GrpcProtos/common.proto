@@ -4,20 +4,30 @@ option csharp_namespace = "MessageQueue.GrpcProtos";
 
 package GrpcProtos;
 
-message GetRequest{
-	string id = 1;
+// Definimos un mensaje llamado MessageContent que tiene dos campos: title y content
+message MessageContent {
+  // Campo title de tipo string
+  string title = 1;
+  // Campo content de tipo string
+  string content = 2;
 }
 
-message DeleteRequest{
-	string id = 1;
+// Definimos un mensaje llamado NetworkEndpoint que tiene dos campos: ip y port
+message NetworkEndpoint {
+  // Campo ip de tipo string
+  string ip = 1;
+  // Campo port de tipo int32
+  int32 port = 2;
 }
 
-message MessageContent{
-	string title = 1;
-	string content = 2;
+// Definimos un mensaje llamado GetRequest que tiene un campo llamado id
+message GetRequest {
+  // Campo id de tipo string
+  string id = 1;
 }
 
-message NetworkEndpoint{
-	string ip = 1;
-	int32 port = 2;
+// Definimos un mensaje llamado DeleteRequest que tiene un campo llamado id
+message DeleteRequest {
+  // Campo id de tipo string
+  string id = 1;
 }

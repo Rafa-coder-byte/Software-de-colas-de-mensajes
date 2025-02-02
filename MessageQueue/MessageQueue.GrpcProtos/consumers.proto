@@ -8,31 +8,32 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "common.proto";
 
+
+// Definimos un servicio llamado ConsumerService que tiene tres métodos
 service Consumer {
-
-	rpc CreateMessage (CreateMessageRequest) returns(MessageDTO);
-	rpc GetMessage (GetRequest) returns(NullableMessageDTO);
-	rpc GetAllMessages (google.protobuf.Empty) returns(Messages);
-	rpc UpdateMessage (MessageDTO) returns(google.protobuf.Empty);
-	rpc DeleteMessage (DeleteRequest) returns(google.protobuf.Empty);
+  // Método CreateConsumer que crea un consumidor y devuelve una respuesta
+  rpc CreateConsumer(CreateConsumerDTORequest) returns (ConsumerDTO);
+  // Método GetConsumer que devuelve un consumidor
+  rpc GetConsumer(GetRequest) returns (ConsumerDTO); 
+    // Método GetAllConsumers que devuelve una lista de consumidores
+  rpc GetAllConsumers(google.protobuf.Empty) returns (Consumers); 
+  // Método DeleteConsumer que elimina un consumidor y devuelve una respuesta
+  rpc DeleteConsumer(DeleteRequest) returns (google.protobuf.Empty);
 }
 
-message MessageDTO{
-	string id = 1;
-	
+// Definimos un mensaje llamado Consumer que tiene dos campos: id y endpoint
+message ConsumerDTO {
+  // Campo id de tipo string
+  string id = 1;
+  // Campo endpoint de tipo NetworkEndpoint
+  NetworkEndpoint endpoint = 2;
 }
 
-message Messagess{
-	repeated MessageDTO items = 1;
+message Consumers{
+    repeated ConsumerDTO consumers = 1;
 }
-
-message NullableMessageDTO{
-	oneof kind{
-		google.protobuf.Empty null = 1;
-		MessageDTO actuador = 2;
-	}
-}
-
-message CreateMessageRequest{
-	
+// Definimos un mensaje llamado ConsumerResponse que tiene un campo llamado consumer_id
+message CreateConsumerDTORequest {
+  // Campo endpoint de tipo NetworkEndpoint
+  NetworkEndpoint endpoint = 2;
 }

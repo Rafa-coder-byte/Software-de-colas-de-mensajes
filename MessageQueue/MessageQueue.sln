@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageQueue.DataAccess", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageQueue.Contracts", "MessageQueue.Contracts\MessageQueue.Contracts.csproj", "{68041D57-F066-4243-8524-839FBD216848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.DataAccessTests", "MessageQueue.DataAccessTests\MessageQueue.DataAccessTests.csproj", "{D2CBEB55-B99F-4A48-BEEC-BE7102972BBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageQueue.DataAccessTests", "MessageQueue.DataAccessTests\MessageQueue.DataAccessTests.csproj", "{D2CBEB55-B99F-4A48-BEEC-BE7102972BBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.GrpcProtos", "MessageQueue.GrpcProtos\MessageQueue.GrpcProtos.csproj", "{CD8F0A45-A91A-411B-8B53-4BBC5E099AEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageQueue.GrpcProtos", "MessageQueue.GrpcProtos\MessageQueue.GrpcProtos.csproj", "{CD8F0A45-A91A-411B-8B53-4BBC5E099AEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.Application", "MessageQueue.Application\MessageQueue.Application.csproj", "{8DE2C026-7F08-4CA2-BA0B-151CD24B0DE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.GrpcService", "MessageQueue.GrpcService\MessageQueue.GrpcService.csproj", "{44CFEB94-5C9F-484F-BD6E-5D9BD12CBD9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{CD8F0A45-A91A-411B-8B53-4BBC5E099AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD8F0A45-A91A-411B-8B53-4BBC5E099AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD8F0A45-A91A-411B-8B53-4BBC5E099AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE2C026-7F08-4CA2-BA0B-151CD24B0DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE2C026-7F08-4CA2-BA0B-151CD24B0DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE2C026-7F08-4CA2-BA0B-151CD24B0DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE2C026-7F08-4CA2-BA0B-151CD24B0DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44CFEB94-5C9F-484F-BD6E-5D9BD12CBD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44CFEB94-5C9F-484F-BD6E-5D9BD12CBD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44CFEB94-5C9F-484F-BD6E-5D9BD12CBD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44CFEB94-5C9F-484F-BD6E-5D9BD12CBD9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MessageQueue"
   ],
-  "SelectedNode": "\\D:\\source\\Software-de-colas-de-mensajes",
+  "SelectedNode": "\\MessageQueue\\MessageQueue.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -1,12 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿syntax = "proto3";
 
-namespace MessageQueue.GrpcProtos
-{
-    internal class producers
-    {
-    }
+option csharp_namespace = "MessageQueue.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+
+// Definimos un servicio llamado ProducerService que tiene tres métodos
+service Producer {
+  // Método CreateProducer que crea un productor y devuelve una respuesta
+  rpc CreateProducer(CreateProducerDTORequest) returns (ProducerDTO);
+  // Método GetProducer que devuelve un productor
+  rpc GetProducer(GetRequest) returns (ProducerDTO);
+  // Método GetAllProducers que devuelve una lista de productores
+  rpc GetAllProducers(google.protobuf.Empty) returns (Producers); 
+  // Método DeleteProducer que elimina un productor y devuelve una respuesta
+  rpc DeleteProducer(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+
+// Definimos un mensaje llamado Producer que tiene dos campos: id y endpoint
+message ProducerDTO {
+  // Campo id de tipo string
+  string id = 1;
+  // Campo endpoint de tipo NetworkEndpoint
+  NetworkEndpoint endpoint = 2;
+}
+
+message Producers{
+	repeated ProducerDTO producers = 1;
+}
+
+
+// Definimos un mensaje llamado ProducerResponse que tiene un campo llamado producer_id
+message CreateProducerDTORequest {
+   // Campo endpoint de tipo NetworkEndpoint
+  NetworkEndpoint endpoint = 2;
 }

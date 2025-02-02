@@ -16,6 +16,7 @@ namespace MessageQueue.Domain.Entities
     /// </summary>
     public class Message : Entity
     {
+
         private readonly List<Guid> _readBy = new();
 
         /// <summary>

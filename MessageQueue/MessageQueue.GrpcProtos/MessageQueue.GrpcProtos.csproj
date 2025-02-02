@@ -24,20 +24,6 @@
     <Protobuf Include="*.proto" GrpcServices="Both" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="producers.proto" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="producers.proto" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Google.Protobuf" Version="3.29.3" />
-    <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
-    <PackageReference Include="MediatR" Version="12.4.1" />
-  </ItemGroup>
 
 </Project>
 	
